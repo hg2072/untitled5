@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+    <!-- 配置前端控制器，对浏览器发送的请求进行统一处理 -->
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 加载springmvc.xml配置文件的位置和名称，配置的是 spring 配置 -->
+        <init-param>
+            <!-- contextConfigLocation: 上下文配置路径，固定值 -->
+            <param-name>contextConfigLocation</param-name>
+            <!-- classpath: 类路径，值是 Java 和 resources 文件夹 -->
+            <!-- springmvc.xml: 指的是配置文件的名称：需要配置springmvc.xml, 在下面 -->
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+        <!-- 配置启动加载 -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+</web-app>
